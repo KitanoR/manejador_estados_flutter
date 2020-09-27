@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:manejador_estado/bloc/usuario/usuario_bloc.dart';
+import 'package:manejador_estado/models/usuario.dart';
 
 
 class Page2Page extends StatelessWidget {
@@ -31,7 +34,14 @@ class CambiarDatos extends StatelessWidget {
               child: Text('Establecer usuario', style: TextStyle(color: Colors.white),),
               color: Colors.blue,
               onPressed: () {
-
+                final newUsuario = new Usuario(
+                  nombre: 'Cayetano',
+                  edad: 23,
+                  profesiones: ['Programador']
+                );
+                BlocProvider.of<UsuarioBloc>(context).add(
+                  ActivarUsuario(newUsuario)
+                );
               },
             ),
             MaterialButton(
