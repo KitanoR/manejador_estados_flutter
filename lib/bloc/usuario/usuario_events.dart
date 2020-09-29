@@ -12,3 +12,17 @@ class ActivarUsuario extends UsuarioEvents {
     return 'Instance of Usuario: ${this.usuario.nombre}';
   }
 }
+
+class CambiarEdad extends UsuarioEvents {
+  final int edad;
+
+  CambiarEdad(this.edad);
+}
+
+class CambiarProfesiones extends UsuarioEvents {
+  final String nuevaProfesion;
+
+  CambiarProfesiones(this.nuevaProfesion);
+}
+
+class BorrarUsuario extends UsuarioEvents{}

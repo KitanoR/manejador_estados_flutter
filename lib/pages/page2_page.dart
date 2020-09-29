@@ -24,6 +24,8 @@ class CambiarDatos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: close_sinks
+    final usuarioBloc = BlocProvider.of<UsuarioBloc>(context);
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -39,7 +41,7 @@ class CambiarDatos extends StatelessWidget {
                   edad: 23,
                   profesiones: ['Programador']
                 );
-                BlocProvider.of<UsuarioBloc>(context).add(
+                usuarioBloc.add(
                   ActivarUsuario(newUsuario)
                 );
               },
@@ -48,14 +50,18 @@ class CambiarDatos extends StatelessWidget {
               child: Text('Cambiar edad', style: TextStyle(color: Colors.white),),
               color: Colors.blue,
               onPressed: () {
-                
+                usuarioBloc.add(
+                  CambiarEdad(28)
+                );
               },
             ),
             MaterialButton(
               child: Text('Agregar profesion', style: TextStyle(color: Colors.white),),
               color: Colors.blue,
               onPressed: () {
-                
+                usuarioBloc.add(
+                  CambiarProfesiones('Nueva profesion')
+                );
               },
             )
           ],
